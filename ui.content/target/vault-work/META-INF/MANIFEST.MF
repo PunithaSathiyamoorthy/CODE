@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Created-By: Apache Jackrabbit FileVault - Package Maven Plugin 1.1.4
+Build-Jdk-Spec: 23
+Implementation-Title: WKND Sites Code - UI content
+Implementation-Version: 0.0.1-SNAPSHOT
+Content-Package-Type: content
+Content-Package-Id: com.adobe.aem.code:aem-guides-code.ui.content:0.0.1-
+ SNAPSHOT
+Content-Package-Description: UI content package for WKND Sites Code
+Content-Package-Dependencies: com.adobe.aem.code:aem-guides-code.ui.apps
+ :0.0.1-SNAPSHOT
+Content-Package-Dependencies-Locations: com.adobe.aem.code:aem-guides-co
+ de.ui.apps:0.0.1-SNAPSHOT=maven:com.adobe.aem.code:aem-guides-code.ui.a
+ pps:0.0.1-SNAPSHOT:zip
+Content-Package-Roots: /conf/code,/content/code,/content/dam/code,/conte
+ nt/experience-fragments/code
+
