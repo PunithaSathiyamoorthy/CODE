@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Created-By: Apache Jackrabbit FileVault - Package Maven Plugin 1.1.4
+Build-Jdk-Spec: 23
+Implementation-Title: WKND Sites Code - All
+Implementation-Version: 0.0.1-SNAPSHOT
+Content-Package-Type: container
+Content-Package-Id: com.adobe.aem.code:aem-guides-code.all:0.0.1-SNAPSHO
+ T
+Content-Package-Description: All content package for WKND Sites Code
+Content-Package-Roots: /apps/code-packages,/apps/code-vendor-packages
+
