@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic State Field</title>
+</head>
+<body>
+
+<select id="country" onchange="changeState()">
+  <option value="">Select Country</option>
+  <option value="USA">USA</option>
+  <option value="UK">UK</option>
+  <!-- Add more options as needed -->
+</select>
+
+<select id="state" disabled>
+  <option value="">Select State</option>
+  <!-- States for USA -->
+  <optgroup label="USA">
+    <option value="California">California</option>
+    <option value="New York">New York</option>
+    <!-- Add more states as needed -->
+  </optgroup>
+  <!-- States for UK -->
+  <optgroup label="UK">
+    <option value="London">London</option>
+    <option value="Manchester">Manchester</option>
+    <!-- Add more states as needed -->
+  </optgroup>
+  <!-- Add more optgroups for other countries as needed -->
+</select>
+
+<script>
+function changeState() {
+  var country = document.getElementById("country").value;
+  var stateSelect = document.getElementById("state");
+  
+  // Enable state dropdown
+  stateSelect.disabled = false;
+  
+  // Clear previous options
+  stateSelect.innerHTML = "<option value=''>Select State</option>";
+  
+  // Populate states based on selected country
+  switch(country) {
+    case "USA":
+      stateSelect.innerHTML += `
+        <optgroup label="USA">
+          <option value="California">California</option>
+          <option value="New York">New York</option>
+          <!-- Add more states as needed -->
+        </optgroup>`;
+      break;
+    case "UK":
+      stateSelect.innerHTML += `
+        <optgroup label="UK">
+          <option value="London">London</option>
+          <option value="Manchester">Manchester</option>
+          <!-- Add more states as needed -->
+        </optgroup>`;
+      break;
+    // Add cases for other countries as needed
+    default:
+      stateSelect.disabled = true;
+  }
+}
+</script>
+
+</body>
+</html>

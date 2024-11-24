@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form with reCAPTCHA</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ld1zlEqAAAAABznLAY22Rr6K4WDNRzBgZgJSbLd"></script>
+</head>
+<body>
+<form id="demo-form" action="/bin/validateCaptcha" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+
+    <button type="submit" class="g-recaptcha"
+            data-sitekey="6Ld1zlEqAAAAABznLAY22Rr6K4WDNRzBgZgJSbLd"
+            data-callback='onSubmit'
+            data-action='submit'>
+        Submit
+    </button>
+</form>
+<div id="responseMessage"></div>
+
+<script>
+    $(document).ready(function() {
+        // Initialize reCAPTCHA
+        grecaptcha.ready(function() {
+            console.log(grecaptcha); // Check if grecaptcha is defined
+            updateCaptcha();
+            setInterval(updateCaptcha, 90000);
+        });
+
+        function updateCaptcha() {
+            grecaptcha.execute('6Ld1zlEqAAAAABznLAY22Rr6K4WDNRzBgZgJSbLd', {action: 'submit'}).then(function(token) {
+                $("#g-recaptcha-response").val(token);
+            });
+        }
+
+        $("#demo-form").on('submit', function(e) {
+            e.preventDefault();
+            if ($("#g-recaptcha-response").val()) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/bin/validateCaptcha?token=' + $("#g-recaptcha-response").val(),
+                    dataType: 'text',
+                    success: function(response) {
+                        console.log('Response:', response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX error:', error);
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

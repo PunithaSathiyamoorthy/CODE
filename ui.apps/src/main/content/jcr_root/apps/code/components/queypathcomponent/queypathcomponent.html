@@ -1,0 +1,5 @@
+<div data-sly-use.queryPageDisplayer="com.adobe.aem.code.core.models.QueryPageDisplay"></div>
+<sly data-sly-list="${queryPageDisplayer.latestPageDetails}">
+    <a href="${item.path}.html">${item.title}</a>
+</sly>
+</sly>

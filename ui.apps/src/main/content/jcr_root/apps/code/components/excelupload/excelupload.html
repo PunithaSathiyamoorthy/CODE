@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Excel File</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        #uploadForm {
+            max-width: 500px;
+            margin: auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #uploadForm label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #uploadForm input[type="text"],
+        #uploadForm input[type="file"] {
+            width: calc(100% - 22px); /* Adjusted width to accommodate the checkbox */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            display: inline-block; /* Aligns input elements horizontally */
+        }
+        #uploadForm .checkbox-container {
+            text-align: center; /* Center aligns the checkbox container */
+        }
+        #uploadForm input[type="checkbox"] {
+            width: 20px; /* Adjusted width for the checkbox */
+            margin-top: 5px; /* Aligns the checkbox vertically */
+        }
+        #uploadButton {
+            display: block;
+            margin: 0 auto; /* Center aligns the button */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #uploadButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form id="uploadForm" enctype="multipart/form-data">
+        <div>
+            <label for="expFragment">Excel Upload Component:</label>
+            <input type="text" id="expFragment" name="expFragment">
+        </div>
+		<input type="file" name="excelFile" id="excelFile" accept=".xlsx, .xls">
+        <div>
+            <input type="checkbox" id="activate" name="activate">
+            <label for="activate">Activate</label>
+        </div>
+    <button type="submit" id="uploadButton">Upload</button>
+</form>
+
+<script>
+    $('#uploadForm').on('submit', function (e) {
+            e.preventDefault();
+
+           var fileInput = $('#excelFile')[0].files[0];
+           var customExp = $('#expFragment').val();
+           var activate = $("#activate").is(":checked");
+           var formData = new FormData();
+           formData.append('file', fileInput);
+           formData.append('xfPath',customExp);
+           formData.append('activate',activate);
+            
+            $.ajax({
+                url: '/bin/upload/excel',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    console.log('Upload successful:', response);
+                    console.log(formData);
+                    alert(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Upload failed:', error);
+                    alert('Error occurred while uploading file.');
+                }
+            });
+        });
+</script>
+</body>
+</html>
