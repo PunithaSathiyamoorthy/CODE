@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.adobe.aem.code.core.servlets.CustomMailServlet" immediate="true">
+  <property name="sling.servlet.method" type="String" value="GET"/>
+  <property name="sling.servlet.paths" type="String" value="/custom/mailservlet"/>
+  <service>
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <reference name="messageGatewayService" interface="com.day.cq.mailer.MessageGatewayService" field="messageGatewayService"/>
+  <implementation class="com.adobe.aem.code.core.servlets.CustomMailServlet"/>
+</scr:component>

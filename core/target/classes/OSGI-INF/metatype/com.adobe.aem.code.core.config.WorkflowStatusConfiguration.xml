@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/com.adobe.aem.code.core.config.WorkflowStatusConfiguration">
+  <OCD id="com.adobe.aem.code.core.config.WorkflowStatusConfiguration" name="Workflow Status Configuration" description="This configuration captures the details for getting workflow status and sending email">
+    <AD id="schedulerName" type="String" name="Scheduler Name" description="Enter a unique identifier that represents name of the scheduler" default="Workflow\ Status\ Configuration"/>
+    <AD id="enabled" type="Boolean" name="Enabled" description="Check the box to enable the scheduler" default="false"/>
+    <AD id="cronExpression" type="String" name="Cron Expression" description="Cron expression which will decide how the scheduler will run" default="0\ *\ *\ *\ *\ ?"/>
+    <AD id="toEmail" type="String" name="To Email" description="Enter the email address of recipient in TO field" default="anirudh03sharma@gmail.com"/>
+    <AD id="ccEmail" type="String" name="To Email" description="Enter the email address of recipient in CC field" default="anirudh03sharma@gmail.com"/>
+    <AD id="fromEmail" type="String" name="From Email" description="Enter the email addresses of the sender" default="anirudh03sharma@gmail.com"/>
+    <AD id="subject" type="String" name="Subject" description="Enter the subject of the email" default="Workflow\ Status\ Configuration"/>
+  </OCD>
+</metatype:MetaData>

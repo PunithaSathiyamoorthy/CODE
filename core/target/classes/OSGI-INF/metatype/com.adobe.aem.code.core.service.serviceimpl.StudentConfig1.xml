@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/com.adobe.aem.code.core.service.serviceimpl.StudentConfig1">
+  <OCD id="com.adobe.aem.code.core.service.serviceimpl.StudentConfig1" name="Student Configuration" description="Student Details">
+    <AD id="getStudentName" type="String" name="Student Name" description="Enter Student Name"/>
+    <AD id="getRollNumber" type="Integer" name="Roll Number" description="Enter Roll Number"/>
+  </OCD>
+  <Designate pid="com.adobe.aem.code.core.service.serviceimpl.StudentConfigImpl">
+    <Object ocdref="com.adobe.aem.code.core.service.serviceimpl.StudentConfig1"/>
+  </Designate>
+</metatype:MetaData>

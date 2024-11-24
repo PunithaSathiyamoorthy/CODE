@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.adobe.aem.code.core.servlets.Pageproperty">
+  <property name="sling.servlet.paths" type="String">/custom/demo/servlet</property>
+  <service>
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <reference name="pageManager" interface="com.day.cq.wcm.api.PageManager" field="pageManager"/>
+  <implementation class="com.adobe.aem.code.core.servlets.Pageproperty"/>
+</scr:component>

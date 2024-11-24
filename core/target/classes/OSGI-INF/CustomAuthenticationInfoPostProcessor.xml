@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="CustomAuthenticationInfoPostProcessor" immediate="true">
+  <service>
+    <provide interface="org.apache.sling.auth.core.spi.AuthenticationInfoPostProcessor"/>
+  </service>
+  <reference name="resolverFactory" interface="org.apache.sling.api.resource.ResourceResolverFactory" field="resolverFactory"/>
+  <implementation class="com.adobe.aem.code.core.service.CustomAuthenticationInfoPostProcessor"/>
+</scr:component>
